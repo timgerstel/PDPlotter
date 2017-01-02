@@ -4,4 +4,5 @@ Phase Diagram Plotter
 
 ## Authors and Contributors
 Timothy Gerstel
+
 Bug reports can be submitted to tgerstel@umass.edu
