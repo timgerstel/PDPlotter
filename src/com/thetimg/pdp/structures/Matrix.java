@@ -8,6 +8,7 @@ public class Matrix {
 	protected int cols = 0;
 	
 	//empty square matrix
+	//Param: integer matrix dimensions
 	public Matrix(int a){
 		if(a == 0){
 			//Error - cannot have size 0 matrix
@@ -19,6 +20,7 @@ public class Matrix {
 	}
 	
 	//empty a * b sized matrix
+	//Params: row size, column size
 	public Matrix(int a, int b){
 		if(a == 0 || b == 0){
 			//Error - cannot have size 0 matrix
@@ -29,6 +31,8 @@ public class Matrix {
 		cols = b;
 	}
 	
+	//generate matrix from existing array
+	//Param: Array of values
 	public Matrix(double[][] mat){
 		if(mat == null){
 			//Error - null matrix
@@ -40,36 +44,70 @@ public class Matrix {
 		size = rows * cols;
 	}
 	
-	public void setValue(int row, int col, double value){
-		if(row > rows-1 || col > cols-1){
+	//set single value in matrix.
+	//Params: row index, column index, value to insert
+	public void setValue(int rowIndex, int colIndex, double value){
+		if(rowIndex > rows-1 || colIndex > cols-1){
 			//Error - index out of bound
 			throw new ArrayIndexOutOfBoundsException();
 		}
-		mat[row][col] = value;
+		mat[rowIndex][colIndex] = value;
 	}
 	
-	//Set values via regex separated string
+	//Set ALL values via regex separated string
+	//Params: values of matrix as string, regex separator string
 	public void setValues(String input, String regex){
 		String[] vals = input.split(regex);
 		if(vals.length != size){
 			//Error - Number if inputs is not equal to size of matrix
-		}
-		int valInd = 0;
-		for(int i = 0; i < rows; i++){
-			for(int j = 0; j < cols; j++){
-				mat[i][j] = Double.parseDouble(vals[valInd++]);
+		} else {
+			int valInd = 0;
+			for(int i = 0; i < rows; i++){
+				for(int j = 0; j < cols; j++){
+					mat[i][j] = Double.parseDouble(vals[valInd++]);
+				}
 			}
 		}
 	}
 	
-	public double getValue(int row, int col){
-		return mat[row][col];
+	//return value @params
+	//Params: row index, column index
+	public double getValue(int rowIndex, int colIndex){
+		return mat[rowIndex][colIndex];
 	}
 	
 	public int getSize(){
 		return size;
 	}
 	
+	public int getRows(){
+		return rows;
+	}
+	
+	public int getCols(){
+		return cols;
+	}
+	
+	//return a submatrix of current matrix
+	//Params: row index to exclude from submatrix, column index to exclude submatrix
+	public Matrix getSubmatrix(int rowIndex, int colIndex){
+		StringBuilder vals = new StringBuilder();
+		double[][] sub = new double[rows-1][cols-1];
+		Matrix ret = new Matrix(sub);
+		for(int i = 0; i < rows; i++){
+			if(i != rowIndex){
+				for(int j = 0; j < cols; j++){
+					if(j != colIndex){
+						vals.append(mat[i][j] + ",");
+					}
+				}
+			}
+		}
+		ret.setValues(vals.toString(), ",");
+		return ret;
+	}
+	
+	//print matrix to console
 	public void toConsole(){
 		for(int i = 0; i < rows; i++){
 			System.out.print("|");
