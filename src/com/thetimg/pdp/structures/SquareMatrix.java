@@ -13,6 +13,23 @@ public class SquareMatrix extends Matrix{
 		super(a);
 	}
 	
+	public SquareMatrix getSubmatrix(int rowIndex, int colIndex){
+		StringBuilder vals = new StringBuilder();
+		double[][] sub = new double[rows-1][cols-1];
+		SquareMatrix ret = new SquareMatrix(sub);
+		for(int i = 0; i < rows; i++){
+			if(i != rowIndex){
+				for(int j = 0; j < cols; j++){
+					if(j != colIndex){
+						vals.append(mat[i][j] + ",");
+					}
+				}
+			}
+		}
+		ret.setValues(vals.toString(), ",");
+		return ret;
+	}
+	
 	public double getTrace(){
 		double ret = 0;
 		for(int i = 0; i < rows; i++){
@@ -21,18 +38,20 @@ public class SquareMatrix extends Matrix{
 		return ret;
 	}
 	
+	//return determinant of matrix
 	public double getDet(){
 		return getDet(this);
 	}
 	
-	private double getDet(Matrix m){
+	//Recursive determinant helper
+	private double getDet(SquareMatrix m){
 		if(m.getCols() == 1){
 			return m.getValue(0, 0);
 		} else {
 			double ret = 0;
 			int sign = 1;
 			for(int i = 0; i < m.getCols(); i++){
-				Matrix sub = m.getSubmatrix(0, i);
+				SquareMatrix sub = m.getSubmatrix(0, i);
 				if(i%2 == 0){
 					sign = 1;
 				} else {

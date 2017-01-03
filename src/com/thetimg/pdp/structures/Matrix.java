@@ -8,6 +8,7 @@ public class Matrix {
 	protected int cols = 0;
 	
 	//empty square matrix
+	//Param: integer matrix dimensions
 	public Matrix(int a){
 		if(a == 0){
 			//Error - cannot have size 0 matrix
@@ -19,6 +20,7 @@ public class Matrix {
 	}
 	
 	//empty a * b sized matrix
+	//Params: row size, column size
 	public Matrix(int a, int b){
 		if(a == 0 || b == 0){
 			//Error - cannot have size 0 matrix
@@ -29,6 +31,8 @@ public class Matrix {
 		cols = b;
 	}
 	
+	//generate matrix from existing array
+	//Param: Array of values
 	public Matrix(double[][] mat){
 		if(mat == null){
 			//Error - null matrix
@@ -40,6 +44,8 @@ public class Matrix {
 		size = rows * cols;
 	}
 	
+	//set single value in matrix.
+	//Params: row index, column index, value to insert
 	public void setValue(int rowIndex, int colIndex, double value){
 		if(rowIndex > rows-1 || colIndex > cols-1){
 			//Error - index out of bound
@@ -48,7 +54,8 @@ public class Matrix {
 		mat[rowIndex][colIndex] = value;
 	}
 	
-	//Set values via regex separated string
+	//Set ALL values via regex separated string
+	//Params: values of matrix as string, regex separator string
 	public void setValues(String input, String regex){
 		String[] vals = input.split(regex);
 		if(vals.length != size){
@@ -63,6 +70,8 @@ public class Matrix {
 		}
 	}
 	
+	//return value @params
+	//Params: row index, column index
 	public double getValue(int rowIndex, int colIndex){
 		return mat[rowIndex][colIndex];
 	}
@@ -79,6 +88,8 @@ public class Matrix {
 		return cols;
 	}
 	
+	//return a submatrix of current matrix
+	//Params: row index to exclude from submatrix, column index to exclude submatrix
 	public Matrix getSubmatrix(int rowIndex, int colIndex){
 		StringBuilder vals = new StringBuilder();
 		double[][] sub = new double[rows-1][cols-1];
@@ -96,6 +107,7 @@ public class Matrix {
 		return ret;
 	}
 	
+	//print matrix to console
 	public void toConsole(){
 		for(int i = 0; i < rows; i++){
 			System.out.print("|");

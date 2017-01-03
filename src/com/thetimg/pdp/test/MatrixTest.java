@@ -17,7 +17,7 @@ public class MatrixTest {
 	
 	private SquareMatrix sqMat;
 	private Matrix mat;
-	double[][] square = new double[][]{
+	double[][] square = new double[][]{ //det(square) = 0.0
 		{ 1,2,3,4 },
 		{ 5,6,7,8 },
 		{ 9,10,11,12 },
@@ -27,7 +27,7 @@ public class MatrixTest {
 		{ 11,22,33,44 },
 		{ 55,66,77,88 },
 	};
-	double[][] vals1 = new double[][]{
+	double[][] vals1 = new double[][]{ //det(vals1) = 6116526.0
 		{ 12,15,19,-20 },
 		{ 16,-20,40,10 },
 		{ 31,22,-76,2  },
