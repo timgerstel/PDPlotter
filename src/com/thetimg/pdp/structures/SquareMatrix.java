@@ -14,20 +14,25 @@ public class SquareMatrix extends Matrix{
 	}
 	
 	public SquareMatrix getSubmatrix(int rowIndex, int colIndex){
-		StringBuilder vals = new StringBuilder();
-		double[][] sub = new double[rows-1][cols-1];
-		SquareMatrix ret = new SquareMatrix(sub);
-		for(int i = 0; i < rows; i++){
-			if(i != rowIndex){
-				for(int j = 0; j < cols; j++){
-					if(j != colIndex){
-						vals.append(mat[i][j] + ",");
+		if(rowIndex > rows-1 || colIndex > cols-1){
+			//Error - index out of bounds
+			return this;
+		} else {
+			StringBuilder vals = new StringBuilder();
+			double[][] sub = new double[rows-1][cols-1];
+			SquareMatrix ret = new SquareMatrix(sub);
+			for(int i = 0; i < rows; i++){
+				if(i != rowIndex){
+					for(int j = 0; j < cols; j++){
+						if(j != colIndex){
+							vals.append(mat[i][j] + ",");
+						}
 					}
 				}
 			}
+			ret.setValues(vals.toString(), ",");
+			return ret;
 		}
-		ret.setValues(vals.toString(), ",");
-		return ret;
 	}
 	
 	public double getTrace(){

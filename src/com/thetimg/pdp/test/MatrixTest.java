@@ -42,6 +42,14 @@ public class MatrixTest {
 	}
 	
 	@Test
+	public void testGetValue(){
+		mat = new Matrix(2,2);
+		assertEquals(0, mat.getValue(0, 0), 0);
+		mat.setValue(0, 0, 1);
+		assertEquals(1, mat.getValue(0, 0), 0);
+	}
+	
+	@Test
 	public void testSetValue(){
 		mat.setValue(1, 1, 6.6);
 		sqMat.setValue(3, 3, 6.2);
@@ -77,8 +85,10 @@ public class MatrixTest {
 	
 	@Test
 	public void testGetSubmatrix(){
-		mat = mat.getSubmatrix(1, 3);
-		mat.toConsole();
+		Matrix newmat = mat.getSubmatrix(1, 3);
+		assertEquals(3, newmat.getCols());
+		assertEquals(1, newmat.getRows());
+		newmat.toConsole();
 	}
 	
 	@Test

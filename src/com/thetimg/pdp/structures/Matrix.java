@@ -58,8 +58,8 @@ public class Matrix {
 	//Params: values of matrix as string, regex separator string
 	public void setValues(String input, String regex){
 		String[] vals = input.split(regex);
-		if(vals.length != size){
-			//Error - Number if inputs is not equal to size of matrix
+		if(vals.length != size || input == null || regex == null){
+			//Error - Number of inputs is not equal to size of matrix
 		} else {
 			int valInd = 0;
 			for(int i = 0; i < rows; i++){
@@ -73,7 +73,12 @@ public class Matrix {
 	//return value @params
 	//Params: row index, column index
 	public double getValue(int rowIndex, int colIndex){
-		return mat[rowIndex][colIndex];
+		if(rowIndex > rows-1 || colIndex > cols-1){
+			//Error - array index out of bounds
+			return 0;
+		} else {
+			return mat[rowIndex][colIndex];
+		}
 	}
 	
 	public int getSize(){
@@ -91,20 +96,25 @@ public class Matrix {
 	//return a submatrix of current matrix
 	//Params: row index to exclude from submatrix, column index to exclude submatrix
 	public Matrix getSubmatrix(int rowIndex, int colIndex){
-		StringBuilder vals = new StringBuilder();
-		double[][] sub = new double[rows-1][cols-1];
-		Matrix ret = new Matrix(sub);
-		for(int i = 0; i < rows; i++){
-			if(i != rowIndex){
-				for(int j = 0; j < cols; j++){
-					if(j != colIndex){
-						vals.append(mat[i][j] + ",");
+		if(rowIndex > rows-1 || colIndex > cols-1){
+			//Error - array index out of bounds
+			return this;
+		} else {
+			StringBuilder vals = new StringBuilder();
+			double[][] sub = new double[rows-1][cols-1];
+			Matrix ret = new Matrix(sub);
+			for(int i = 0; i < rows; i++){
+				if(i != rowIndex){
+					for(int j = 0; j < cols; j++){
+						if(j != colIndex){
+							vals.append(mat[i][j] + ",");
+						}
 					}
 				}
 			}
+			ret.setValues(vals.toString(), ",");
+			return ret;
 		}
-		ret.setValues(vals.toString(), ",");
-		return ret;
 	}
 	
 	//print matrix to console
