@@ -7,7 +7,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
 
-import com.thetimg.errors.ErrorLog;
+import com.thetimg.pdp.errors.ErrorLog;
 
 public class ErrorLogTest {
 	

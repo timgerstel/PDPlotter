@@ -1,6 +1,6 @@
 package com.thetimg.pdp.structures;
 
-import com.thetimg.errors.ErrorLog;
+import com.thetimg.pdp.errors.ErrorLog;
 
 public class SquareMatrix extends Matrix{
 	
