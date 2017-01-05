@@ -1,11 +1,15 @@
 package com.thetimg.pdp.structures;
 
+import com.thetimg.errors.ErrorLog;
+
 public class SquareMatrix extends Matrix{
 	
 	public SquareMatrix(double[][] mat){
 		super(mat);
 		if(rows != cols){
 			//Error - Cannot be defined as square matrix
+			ErrorLog.add("Matrix dimensions are not square");
+			System.out.println("Matrix dimensions are not square");
 		}
 	}
 
@@ -16,6 +20,8 @@ public class SquareMatrix extends Matrix{
 	public SquareMatrix getSubmatrix(int rowIndex, int colIndex){
 		if(rowIndex > rows-1 || colIndex > cols-1){
 			//Error - index out of bounds
+			ErrorLog.add("ArrayIndexOutOfBounds", "Submatrix could not be returned, index is out of bounds.");
+			System.out.println("Submatrix could not be returned, index is out of bounds.");
 			return this;
 		} else {
 			StringBuilder vals = new StringBuilder();

@@ -1,5 +1,7 @@
 package com.thetimg.pdp.structures;
 
+import com.thetimg.errors.ErrorLog;
+
 public class Matrix {
 	
 	protected double[][] mat;
@@ -11,24 +13,28 @@ public class Matrix {
 	//Param: integer matrix dimensions
 	public Matrix(int a){
 		if(a == 0){
-			//Error - cannot have size 0 matrix
+			ErrorLog.add("Matrix size zero", "Cannot create a matrix with size 0.");
+			System.out.println("Matrix initialized with size 0.  Please enter a valid size.");
+		} else {
+			mat = new double[a][a];
+			size = a*a;
+			rows = a;
+			cols = a;
 		}
-		mat = new double[a][a];
-		size = a*a;
-		rows = a;
-		cols = a;
 	}
 	
 	//empty a * b sized matrix
 	//Params: row size, column size
 	public Matrix(int a, int b){
 		if(a == 0 || b == 0){
-			//Error - cannot have size 0 matrix
+			ErrorLog.add("Matrix size zero", "Cannot create a matrix with size 0.");
+			System.out.println("Matrix initialized with size 0.  Please enter a valid size.");
+		} else {
+			mat = new double[a][b];
+			size = a * b;
+			rows = a;
+			cols = b;
 		}
-		mat = new double[a][b];
-		size = a * b;
-		rows = a;
-		cols = b;
 	}
 	
 	//generate matrix from existing array
@@ -36,12 +42,14 @@ public class Matrix {
 	public Matrix(double[][] mat){
 		if(mat == null){
 			//Error - null matrix
-			throw new NullPointerException();
+			ErrorLog.add("null", "Null Matrix", "Cannot initialize a matrix from a null array");
+			System.out.println("Matrix initialized to null parameter.  Please enter a valid array");
+		} else {
+			this.mat = mat;
+			rows = mat.length;
+			cols = mat[0].length;
+			size = rows * cols;
 		}
-		this.mat = mat;
-		rows = mat.length;
-		cols = mat[0].length;
-		size = rows * cols;
 	}
 	
 	//set single value in matrix.
@@ -49,9 +57,11 @@ public class Matrix {
 	public void setValue(int rowIndex, int colIndex, double value){
 		if(rowIndex > rows-1 || colIndex > cols-1){
 			//Error - index out of bound
-			throw new ArrayIndexOutOfBoundsException();
+			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be set, index is out of bounds.");
+			System.out.println("Value could not be set, index is out of bounds.");
+		} else {
+			mat[rowIndex][colIndex] = value;
 		}
-		mat[rowIndex][colIndex] = value;
 	}
 	
 	//Set ALL values via regex separated string
@@ -60,6 +70,8 @@ public class Matrix {
 		String[] vals = input.split(regex);
 		if(vals.length != size || input == null || regex == null){
 			//Error - Number of inputs is not equal to size of matrix
+			ErrorLog.add("IMPORTANT", "Size Mismatch", "Number of input values is different than size of matrix.");
+			System.out.println("Number of input values is different than size of matrix.");
 		} else {
 			int valInd = 0;
 			for(int i = 0; i < rows; i++){
@@ -74,7 +86,8 @@ public class Matrix {
 	//Params: row index, column index
 	public double getValue(int rowIndex, int colIndex){
 		if(rowIndex > rows-1 || colIndex > cols-1){
-			//Error - array index out of bounds
+			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be returned, index is out of bounds.");
+			System.out.println("Value could not be returned, index is out of bounds.");
 			return 0;
 		} else {
 			return mat[rowIndex][colIndex];
@@ -97,7 +110,9 @@ public class Matrix {
 	//Params: row index to exclude from submatrix, column index to exclude submatrix
 	public Matrix getSubmatrix(int rowIndex, int colIndex){
 		if(rowIndex > rows-1 || colIndex > cols-1){
-			//Error - array index out of bounds
+			//Error - index out of bounds
+			ErrorLog.add("ArrayIndexOutOfBounds", "Submatrix could not be returned, index is out of bounds.");
+			System.out.println("Submatrix could not be returned, index is out of bounds.");
 			return this;
 		} else {
 			StringBuilder vals = new StringBuilder();

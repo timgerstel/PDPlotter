@@ -12,6 +12,16 @@ public class ErrorLog {
 	
 	private static List<String> errors = new ArrayList<String>();
 	
+	public static void add(String message){
+		String error = message;
+		errors.add(error);
+	}
+	
+	public static void add(String title, String message){
+		String error = title + ": " + message;
+		errors.add(error);
+	}
+	
 	public static void add(String type, String title, String message){
 		String error = type.toUpperCase() + " " + title + ": " + message;
 		errors.add(error);
