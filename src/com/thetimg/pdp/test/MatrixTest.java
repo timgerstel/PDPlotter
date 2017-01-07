@@ -99,6 +99,15 @@ public class MatrixTest {
 	}
 	
 	@Test
+	public void testEquals(){
+		Matrix eqMat = new Matrix(vals);
+		assertTrue(mat.equals(eqMat));
+		assertFalse(mat.equals(sqMat));
+		Matrix eqSq = new SquareMatrix(square);
+		assertTrue(eqSq.equals(sqMat));
+	}
+	
+	@Test
 	public void testToConsole(){
 		sqMat.toConsole();
 	}

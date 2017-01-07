@@ -106,6 +106,25 @@ public class Matrix {
 		return cols;
 	}
 	
+	public boolean equals(Matrix m){
+		if(m == null){
+			ErrorLog.add("null", "Null Matrix", "Parameter cannot be a null matrix");
+			System.out.println("Parameter cannot be a null matrix");
+			return false;
+		} else if(rows != m.getRows() || cols != m.getCols()){
+			return false;
+		} else {
+			for(int i = 0; i < rows; i++){
+				for(int j = 0; j < rows; j++){
+					if(getValue(i, j) != m.getValue(i, j)){
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+	}
+	
 	//return a submatrix of current matrix
 	//Params: row index to exclude from submatrix, column index to exclude submatrix
 	public Matrix getSubmatrix(int rowIndex, int colIndex){

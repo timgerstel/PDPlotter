@@ -53,6 +53,8 @@ public class MatrixMathTest {
 	
 	@Test
 	public void testAdd(){
+		Matrix AB = MatrixMath.add(A, B);
+		assertTrue(AB.equals(A));
 		SquareMatrix CD = MatrixMath.add(C, D);
 		assertEquals(6, CD.getValue(0, 0), 0);
 		assertEquals(8, CD.getValue(0, 1), 0);
@@ -63,6 +65,18 @@ public class MatrixMathTest {
 		assertEquals(44, AE.getValue(0, 1), 0);
 		assertEquals(110, AE.getValue(1, 0), 0);
 		assertEquals(132, AE.getValue(1, 1), 0);
+	}
+	
+	@Test
+	public void testScale(){
+		double[][] valsC2 = new double[][]{
+			{ 2,4 },
+			{ 6,8 }
+		};
+		SquareMatrix C2 = new SquareMatrix(valsC2);
+		SquareMatrix CScale = MatrixMath.scale(C, 2);
+		CScale.toConsole();
+		assertTrue(C2.equals(CScale));
 	}
 
 }

@@ -41,6 +41,25 @@ public class SquareMatrix extends Matrix{
 		}
 	}
 	
+	public boolean equals(SquareMatrix m){
+		if(m == null){
+			ErrorLog.add("null", "Null Matrix", "Parameter cannot be a null matrix");
+			System.out.println("Parameter cannot be a null matrix");
+			return false;
+		} else if(rows != m.getRows() || cols != m.getCols()){
+			return false;
+		} else {
+			for(int i = 0; i < rows; i++){
+				for(int j = 0; j < rows; j++){
+					if(getValue(i, j) != m.getValue(i, j)){
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+	}
+	
 	public double getTrace(){
 		double ret = 0;
 		for(int i = 0; i < rows; i++){
