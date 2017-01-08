@@ -13,6 +13,7 @@ public class Matrix {
 	//Param: integer matrix dimensions
 	public Matrix(int a){
 		if(a == 0){
+			//Todo: handle initialization error
 			ErrorLog.add("Matrix size zero", "Cannot create a matrix with size 0.");
 			System.out.println("Matrix initialized with size 0.  Please enter a valid size.");
 		} else {
@@ -27,6 +28,7 @@ public class Matrix {
 	//Params: row size, column size
 	public Matrix(int a, int b){
 		if(a == 0 || b == 0){
+			//Todo: handle initialization error
 			ErrorLog.add("Matrix size zero", "Cannot create a matrix with size 0.");
 			System.out.println("Matrix initialized with size 0.  Please enter a valid size.");
 		} else {
@@ -42,6 +44,7 @@ public class Matrix {
 	public Matrix(double[][] mat){
 		if(mat == null){
 			//Error - null matrix
+			//Todo: handle initialization error
 			ErrorLog.add("null", "Null Matrix", "Cannot initialize a matrix from a null array");
 			System.out.println("Matrix initialized to null parameter.  Please enter a valid array");
 		} else {
@@ -49,6 +52,25 @@ public class Matrix {
 			rows = mat.length;
 			cols = mat[0].length;
 			size = rows * cols;
+		}
+	}
+	
+	//generate matrix from existing matrix
+	//param: Matrix m
+	public Matrix(Matrix m){
+		if(m == null){
+			ErrorLog.add("null", "Null Matrix", "Cannot initialize a matrix from a null matrix");
+			System.out.println("Matrix initialized to null parameter.  Please enter a valid matrix");
+		} else {
+			mat = new double[m.getRows()][m.getCols()];
+			for(int i = 0; i < m.getRows(); i++){
+				for(int j = 0; j < m.getCols(); j++){
+					mat[i][j] = m.getValue(i, j);
+				}
+			}
+			rows = m.getRows();
+			cols = m.getCols();
+			size = m.getSize();
 		}
 	}
 	
