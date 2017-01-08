@@ -89,6 +89,14 @@ public class MatrixMathTest {
 		SquareMatrix CprodD = MatrixMath.multiply(C, D);
 		CprodD.toConsole();
 		assertTrue(CD.equals(CprodD));
+		double[][] prod2 = new double[][]{
+			{ 1727,3311,2321,374 },
+			{ 4543,6919,5313,330 }
+		};
+		Matrix AB = new Matrix(prod2);
+		Matrix AprodD = MatrixMath.multiply(A, B);
+		AprodD.toConsole();
+		assertTrue(AB.equals(AprodD));
 	}
 
 }

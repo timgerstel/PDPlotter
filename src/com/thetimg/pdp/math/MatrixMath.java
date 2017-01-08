@@ -148,12 +148,17 @@ public class MatrixMath {
 			return m1;
 		} else {
 			double[][] ret = new double[m1.getRows()][m2.getCols()];
-			for(int i = 0; i < m1.getRows(); i++){
-				for(int j = 0; j < m2.getCols(); j++){
-					for(int k = 0; k < m1.getCols(); k++){
-						int dotProd = 0;
-						dotProd += m1.getValue(i, k) * m2.getValue(k, i);
-						ret[i][j] = dotProd;
+			int count = 0; //row counter for first matrix
+			for(int i = 0; i < m2.getCols(); i++){
+				double dotProd = 0;
+				for(int j = 0; j < m1.getCols(); j++){
+					dotProd += m1.getValue(count, j) * m2.getValue(j, i);
+					ret[count][i] = dotProd;
+				}
+				if(i == m2.getCols()-1){
+					count++;
+					if(count == m1.getRows()-1){
+						i = -1;
 					}
 				}
 			}
@@ -173,13 +178,18 @@ public class MatrixMath {
 			return m1;
 		} else {
 			double[][] ret = new double[m1.getRows()][m2.getCols()];
-			for(int i = 0; i < m1.getRows(); i++){
-				for(int j = 0; j < m2.getCols(); j++){
-					double dotProd = 0;
-					for(int k = 0; k < m1.getCols(); k++){
-						dotProd += m1.getValue(i, k) * m2.getValue(j, i);
+			int count = 0; //row counter for first matrix
+			for(int i = 0; i < m2.getCols(); i++){
+				double dotProd = 0;
+				for(int j = 0; j < m1.getCols(); j++){
+					dotProd += m1.getValue(count, j) * m2.getValue(j, i);
+					ret[count][i] = dotProd;
+				}
+				if(i == m2.getCols()-1){
+					count++;
+					if(count == m1.getRows()-1){
+						i = -1;
 					}
-					ret[i][j] = dotProd;
 				}
 			}
 			return new SquareMatrix(ret);

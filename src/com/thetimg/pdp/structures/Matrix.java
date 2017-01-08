@@ -156,7 +156,7 @@ public class Matrix {
 		for(int i = 0; i < rows; i++){
 			System.out.print("|");
 			for(int j = 0; j < cols; j++){
-				System.out.printf("%8.3f", mat[i][j]);
+				System.out.printf("%10.2f", mat[i][j]);
 			}
 			System.out.printf("%3s%n", "|");
 		}
