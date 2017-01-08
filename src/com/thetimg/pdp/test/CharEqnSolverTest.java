@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 
 import com.thetimg.pdp.math.CharEqnSolver;
+import com.thetimg.pdp.math.MatrixMath;
+import com.thetimg.pdp.structures.Matrix;
 import com.thetimg.pdp.structures.SquareMatrix;
 
 public class CharEqnSolverTest {	
@@ -42,8 +44,21 @@ public class CharEqnSolverTest {
 	}
 	
 	@Test
-	public void testGetEvect1(){
-		solver.getEvect1().toConsole();
+	public void testSaddleEvects(){
+		double[][] vect1 = new double[][]{
+			{ 1 },
+			{ 1 }
+		};
+		double[][] vect2 = new double[][]{
+			{ 1 },
+			{ -4 }
+		};
+		Matrix evect1 = new Matrix(vect1);
+		Matrix evect2 = new Matrix(vect2);
+		assertTrue(evect1.equals(solver.getEvect1()));
+		assertTrue(evect2.equals(solver.getEvect2()));
+		evect1.toConsole();
+		evect2.toConsole();
 	}
 
 }
