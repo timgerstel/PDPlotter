@@ -128,6 +128,10 @@ public class Matrix {
 		return cols;
 	}
 	
+	public double[][] getMatrix(){
+		return mat;
+	}
+	
 	public boolean equals(Matrix m){
 		if(m == null){
 			ErrorLog.add("null", "Null Matrix", "Parameter cannot be a null matrix");
@@ -137,7 +141,7 @@ public class Matrix {
 			return false;
 		} else {
 			for(int i = 0; i < rows; i++){
-				for(int j = 0; j < rows; j++){
+				for(int j = 0; j < cols; j++){
 					if(getValue(i, j) != m.getValue(i, j)){
 						return false;
 					}
