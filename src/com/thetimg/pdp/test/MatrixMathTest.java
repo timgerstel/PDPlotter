@@ -78,5 +78,17 @@ public class MatrixMathTest {
 		CScale.toConsole();
 		assertTrue(C2.equals(CScale));
 	}
+	
+	@Test
+	public void testMultiply(){
+		double[][] prod = new double[][]{
+			{ 19, 22 },
+			{ 43, 50 }
+		};
+		SquareMatrix CD = new SquareMatrix(prod);
+		SquareMatrix CprodD = MatrixMath.multiply(C, D);
+		CprodD.toConsole();
+		assertTrue(CD.equals(CprodD));
+	}
 
 }

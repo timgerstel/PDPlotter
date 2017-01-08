@@ -135,5 +135,55 @@ public class MatrixMath {
 			return new SquareMatrix(ret);
 		}
 	}
+	
+	public static Matrix multiply(Matrix m1, Matrix m2){
+		if(m1 == null || m2 == null){
+			//Error - matricies cannot be null
+			ErrorLog.add("null", "Null Matrix", "Cannot add null matricies");
+			System.out.println("Cannot add null matricies");
+			return new Matrix(1);
+		} else if(m1.getCols() != m2.getRows()){
+			ErrorLog.add("Multiplication error", "Number of columns in first matrix must equal number of rows in second matrix");
+			System.out.println("Number of columns in first matrix must equal number of rows in second matrix");
+			return m1;
+		} else {
+			double[][] ret = new double[m1.getRows()][m2.getCols()];
+			for(int i = 0; i < m1.getRows(); i++){
+				for(int j = 0; j < m2.getCols(); j++){
+					for(int k = 0; k < m1.getCols(); k++){
+						int dotProd = 0;
+						dotProd += m1.getValue(i, k) * m2.getValue(k, i);
+						ret[i][j] = dotProd;
+					}
+				}
+			}
+			return new Matrix(ret);
+		}
+	}
+	
+	public static SquareMatrix multiply(SquareMatrix m1, SquareMatrix m2){
+		if(m1 == null || m2 == null){
+			//Error - matricies cannot be null
+			ErrorLog.add("null", "Null Matrix", "Cannot add null matricies");
+			System.out.println("Cannot add null matricies");
+			return new SquareMatrix(1);
+		} else if(m1.getCols() != m2.getRows()){
+			ErrorLog.add("Multiplication error", "Number of columns in first matrix must equal number of rows in second matrix");
+			System.out.println("Number of columns in first matrix must equal number of rows in second matrix");
+			return m1;
+		} else {
+			double[][] ret = new double[m1.getRows()][m2.getCols()];
+			for(int i = 0; i < m1.getRows(); i++){
+				for(int j = 0; j < m2.getCols(); j++){
+					double dotProd = 0;
+					for(int k = 0; k < m1.getCols(); k++){
+						dotProd += m1.getValue(i, k) * m2.getValue(j, i);
+					}
+					ret[i][j] = dotProd;
+				}
+			}
+			return new SquareMatrix(ret);
+		}
+	}
 
 }
