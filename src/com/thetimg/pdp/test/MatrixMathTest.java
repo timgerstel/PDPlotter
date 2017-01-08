@@ -94,9 +94,9 @@ public class MatrixMathTest {
 			{ 4543,6919,5313,330 }
 		};
 		Matrix AB = new Matrix(prod2);
-		Matrix AprodD = MatrixMath.multiply(A, B);
-		AprodD.toConsole();
-		assertTrue(AB.equals(AprodD));
+		Matrix AprodB = MatrixMath.multiply(A, B);
+		AprodB.toConsole();
+		assertTrue(AB.equals(AprodB));
 	}
 	
 	@Test

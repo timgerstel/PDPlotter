@@ -40,5 +40,10 @@ public class CharEqnSolverTest {
 		assertEquals(2.0, solver.getEval1(), 0.0);
 		assertEquals(-3.0, solver.getEval2(), 0.0);
 	}
+	
+	@Test
+	public void testGetEvect1(){
+		solver.getEvect1().toConsole();
+	}
 
 }
