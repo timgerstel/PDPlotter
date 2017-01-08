@@ -195,5 +195,20 @@ public class MatrixMath {
 			return new SquareMatrix(ret);
 		}
 	}
+	
+	public static SquareMatrix getIdentityMatrix(int n){
+		if(n == 0){
+			//Error - size zero matrix
+			ErrorLog.add("Identity Matrix size 0", "Cannot create an identity matrix of size 0");
+			System.out.println("Cannot create an identity matrix of size 0");
+			return new SquareMatrix(1);
+		} else {
+			double[][] ident = new double[n][n];
+			for(int i = 0; i < n; i++){
+				ident[i][i] = 1;
+			}
+			return new SquareMatrix(ident);
+		}
+	}
 
 }

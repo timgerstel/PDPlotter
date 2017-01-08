@@ -98,5 +98,14 @@ public class MatrixMathTest {
 		AprodD.toConsole();
 		assertTrue(AB.equals(AprodD));
 	}
+	
+	@Test
+	public void testIdenityMatrix(){
+		SquareMatrix identity = MatrixMath.getIdentityMatrix(5);
+		for(int i = 0; i < 5; i++){
+			assertEquals(1, identity.getValue(i, i), 0);
+		}
+		identity.toConsole();
+	}
 
 }
