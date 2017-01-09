@@ -74,6 +74,43 @@ public class Matrix {
 		}
 	}
 	
+	public int getSize(){
+		return size;
+	}
+	
+	public int getRows(){
+		return rows;
+	}
+	
+	public int getCols(){
+		return cols;
+	}
+	
+	public double[][] getArray(){
+		return mat;
+	}
+	
+	public boolean isRowVector(){
+		return rows == 1;
+	}
+	
+	public boolean isColVector(){
+		return cols == 1;
+	}
+	
+	
+	//return value @params
+	//Params: row index, column index
+	public double getValue(int rowIndex, int colIndex){
+		if(rowIndex > rows-1 || colIndex > cols-1){
+			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be returned, index is out of bounds.");
+			System.out.println("Value could not be returned, index is out of bounds.");
+			return 0;
+		} else {
+			return mat[rowIndex][colIndex];
+		}
+	}
+	
 	//set single value in matrix.
 	//Params: row index, column index, value to insert
 	public void setValue(int rowIndex, int colIndex, double value){
@@ -102,34 +139,6 @@ public class Matrix {
 				}
 			}
 		}
-	}
-	
-	//return value @params
-	//Params: row index, column index
-	public double getValue(int rowIndex, int colIndex){
-		if(rowIndex > rows-1 || colIndex > cols-1){
-			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be returned, index is out of bounds.");
-			System.out.println("Value could not be returned, index is out of bounds.");
-			return 0;
-		} else {
-			return mat[rowIndex][colIndex];
-		}
-	}
-	
-	public int getSize(){
-		return size;
-	}
-	
-	public int getRows(){
-		return rows;
-	}
-	
-	public int getCols(){
-		return cols;
-	}
-	
-	public double[][] getMatrix(){
-		return mat;
 	}
 	
 	public boolean equals(Matrix m){

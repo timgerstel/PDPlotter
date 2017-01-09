@@ -45,7 +45,7 @@ public class CharEqnSolver {
 		Matrix evect = new Matrix(vect);
 		SquareMatrix lambda = MatrixMath.sub(m, MatrixMath.scale(identity, getEval1()));
 		double[][] firstRow = new double[1][lambda.getCols()];
-		firstRow[0] = lambda.getMatrix()[0];
+		firstRow[0] = lambda.getArray()[0];
 		Matrix fRow = new Matrix(firstRow);
 		//will only work for 2x2 matrix for testing purposes
 		double cons = -fRow.getValue(0, 0)/fRow.getValue(0, 1);
@@ -59,7 +59,7 @@ public class CharEqnSolver {
 		Matrix evect = new Matrix(vect);
 		SquareMatrix lambda = MatrixMath.sub(m, MatrixMath.scale(identity, getEval2()));
 		double[][] firstRow = new double[1][lambda.getCols()];
-		firstRow[0] = lambda.getMatrix()[0];
+		firstRow[0] = lambda.getArray()[0];
 		Matrix fRow = new Matrix(firstRow);
 		//will only work for 2x2 matrix for testing purposes
 		double cons = -fRow.getValue(0, 0)/fRow.getValue(0, 1);
