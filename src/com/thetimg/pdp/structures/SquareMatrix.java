@@ -20,8 +20,8 @@ public class SquareMatrix extends Matrix{
 	public SquareMatrix getSubmatrix(int rowIndex, int colIndex){
 		if(rowIndex > rows-1 || colIndex > cols-1){
 			//Error - index out of bounds
-			ErrorLog.add("ArrayIndexOutOfBounds", "Submatrix could not be returned, index is out of bounds.");
-			System.out.println("Submatrix could not be returned, index is out of bounds.");
+			ErrorLog.add("ArrayIndexOutOfBounds", "Submatrix could not be returned, index is out of bounds @ " + rowIndex + ", " + colIndex);
+			System.out.println("Submatrix could not be returned, index is out of bounds @ " + rowIndex + ", " + colIndex);
 			return this;
 		} else {
 			StringBuilder vals = new StringBuilder();

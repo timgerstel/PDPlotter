@@ -103,8 +103,8 @@ public class Matrix {
 	//Params: row index, column index
 	public double getValue(int rowIndex, int colIndex){
 		if(rowIndex > rows-1 || colIndex > cols-1){
-			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be returned, index is out of bounds.");
-			System.out.println("Value could not be returned, index is out of bounds.");
+			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be returned, index is out of bounds @ " + rowIndex + ", " + colIndex);
+			System.out.println("Value could not be returned, index is out of bounds @ " + rowIndex + ", " + colIndex);
 			return 0;
 		} else {
 			return mat[rowIndex][colIndex];
@@ -116,8 +116,8 @@ public class Matrix {
 	public void setValue(int rowIndex, int colIndex, double value){
 		if(rowIndex > rows-1 || colIndex > cols-1){
 			//Error - index out of bound
-			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be set, index is out of bounds.");
-			System.out.println("Value could not be set, index is out of bounds.");
+			ErrorLog.add("ArrayIndexOutOfBounds", "Value could not be set, index is out of bounds @ " + rowIndex + ", " + colIndex);
+			System.out.println("Value could not be set, index is out of bounds @ " + rowIndex + ", " + colIndex);
 		} else {
 			mat[rowIndex][colIndex] = value;
 		}
@@ -165,8 +165,8 @@ public class Matrix {
 	public Matrix getSubmatrix(int rowIndex, int colIndex){
 		if(rowIndex > rows-1 || colIndex > cols-1){
 			//Error - index out of bounds
-			ErrorLog.add("ArrayIndexOutOfBounds", "Submatrix could not be returned, index is out of bounds.");
-			System.out.println("Submatrix could not be returned, index is out of bounds.");
+			ErrorLog.add("ArrayIndexOutOfBounds", "Submatrix could not be returned, index is out of bounds @ " + rowIndex + ", " + colIndex);
+			System.out.println("Submatrix could not be returned, index is out of bounds @ " + rowIndex + ", " + colIndex);
 			return this;
 		} else {
 			StringBuilder vals = new StringBuilder();
