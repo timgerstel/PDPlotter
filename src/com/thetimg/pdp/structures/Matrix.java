@@ -62,12 +62,7 @@ public class Matrix {
 			ErrorLog.add("null", "Null Matrix", "Cannot initialize a matrix from a null matrix");
 			System.out.println("Matrix initialized to null parameter.  Please enter a valid matrix");
 		} else {
-			mat = new double[m.getRows()][m.getCols()];
-			for(int i = 0; i < m.getRows(); i++){
-				for(int j = 0; j < m.getCols(); j++){
-					mat[i][j] = m.getValue(i, j);
-				}
-			}
+			mat = m.getArray();
 			rows = m.getRows();
 			cols = m.getCols();
 			size = m.getSize();
