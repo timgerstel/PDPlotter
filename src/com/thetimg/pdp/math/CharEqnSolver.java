@@ -7,9 +7,14 @@ import com.thetimg.pdp.structures.SquareMatrix;
 public class CharEqnSolver {
 	
 	private SquareMatrix m;
-	private double det = 0.0;
 	private double trace = 0.0;
+	private double det = 0.0;
 	private SquareMatrix identity;
+	
+	public CharEqnSolver(double trace, double det){
+		this.trace = trace;
+		this.det = det;
+	}
 	
 	public CharEqnSolver(SquareMatrix m){
 		if(m == null){
