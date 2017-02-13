@@ -1,8 +1,2 @@
-.classpath
-.project
-LICENSE.md
-.settings/
-*.class
-/nbproject/private/
-/nbproject
 build.xml
+/nbproject

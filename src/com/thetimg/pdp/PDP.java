@@ -36,7 +36,7 @@ public class PDP {
 				rowInd++;
 				String[] vals = row.split(",");
 				if(vals.length != cols){
-					System.out.println("Invalid row length");
+					System.out.println("All rows must be the same length");
 					break;
 				}
 				matrix += row + ",";
@@ -54,6 +54,7 @@ public class PDP {
 				m.toConsole();
 			}
 		}
+		s.close();
 	}
 	
 //	public Matrix newMatrix(){
